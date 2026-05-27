@@ -415,7 +415,7 @@ function App() {
 
   {/* TABLA */}
   <table className="acta-table">
-  <thead>
+  <thead className="acta-table-head">
     <tr>
       <th>Código</th>
       <th>Serie</th>
@@ -526,6 +526,7 @@ function App() {
             </span>
 
             <span
+            className="span2"
               onClick={() =>
                 handleActivoChange(
                   index,
@@ -541,6 +542,7 @@ function App() {
             </span>
 
             <span
+            className="span2"
               onClick={() =>
                 handleActivoChange(
                   index,
@@ -608,14 +610,14 @@ function App() {
       Ingreso
     </span>
 
-    <span className="span2">
+    <span >
       {form.tipo === "Traslado"
         ? "☒"
         : "☐"}{" "}
       Traslado
     </span>
 
-    <span className="span2">
+    <span>
       {form.tipo === "Baja"
         ? "☒"
         : "☐"}{" "}

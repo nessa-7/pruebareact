@@ -164,6 +164,10 @@ button {
   font-size: 10px;
 }
 
+.acta-table-head{
+  font-size: 12px;
+}
+
 .acta-table th,
 .acta-table td {
   border: 1px solid black;
@@ -173,6 +177,7 @@ button {
 .acta-table input {
   width: 100%;
   border: none;
+  text-align: center;
 }
 
 .obstexto{
@@ -222,6 +227,7 @@ button {
 
 .estado-header {
   text-align: center;
+  line-height: 1.2;
 }
 
 .estado-mini {
