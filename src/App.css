@@ -1,184 +1,350 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+* {
+  box-sizing: border-box;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+body {
+  margin: 0;
+  background: #e7e7e7;
+  font-family: Arial, sans-serif;
 }
 
-#center {
+.container {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  padding: 10px;
+}
+
+.panel-form {
+  width: 430px;
+  min-width: 430px;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  overflow-y: auto;
+  height: 120vh;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  gap: 14px;
+  box-shadow: 0 3px 15px
+    rgba(0,0,0,.08);
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+.panel-form h2 {
+  margin: 0;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.panel-form label {
+  font-size: 13px;
+  font-weight: 600;
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.panel-form input,
+.panel-form select,
+.panel-form textarea {
   width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.preview-wrapper {
+  overflow: auto;
+  width: 100%;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pdf-btn {
+  background: #1f7a1f;
+  color: white;
+}
+
+
+.document {
+  width: 216mm;
+  min-height: 279mm;
+  max-height: 279mm;
+  background: white;
+  margin: auto;
+  padding: 10mm;
+  color: black;
+  font-size: 11px;
+  overflow: hidden;
+}
+
+.top-table {
+  display: grid;
+  grid-template-columns: 150px 1fr 80px;
+  border: 1px solid black;
+}
+
+.logo-space {
+  border-right: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-placeholder {
+  font-weight: bold;
+}
+
+.logoelectrocreditos {
+  width: 95%;
+  height: auto;
+}
+
+.header-center {
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.header-center div {
+  padding: 6px;
+}
+
+.header-title {
+  border-left: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.tipo-row {
+  display: flex;
+  gap: 30px;
+  margin: auto;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.person-row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.person-row input {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.legal-text {
+  margin: 15px 0;
+  text-align: justify;
+  line-height: 1.2;
+}
+
+.acta-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+
+.acta-table th,
+.acta-table td {
+  border: 1px solid black;
+  padding: 1px;
+}
+
+.acta-table input {
+  width: 100%;
+  border: none;
+}
+
+.obstexto{
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.obs-box {
+  margin-top: 10px;
+  display: flex;
+  text-align: left;
+}
+
+.obs-box textarea {
+  width: 100%;
+  height: auto;
+  font-size: 9px;
+  margin-left: -25px;
+}
+
+.certifico {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.firma-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.firma-box {
+  width: 30%;
+  text-align: center;
+}
+
+.firma-box img {
+  width: 120px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.firma-line {
+  border-top: 1px solid black;
+  margin-top: 20px;
+}
+
+.estado-header {
+  text-align: center;
+}
+
+.estado-mini {
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.estado-checks {
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete-btn {
+  border: none;
+  background: red;
+  color: white;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.firma-table {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.firma-column {
+  width: 32%;
+  text-align: center;
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #000;
+}
+
+.firma-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.firma-line {
+  border-top: 1px solid black;
+  margin-top: 10px;
+}
+
+.estado-x {
+  display: flex;
+  justify-content: space-around;
+}
+
+.estado-x span {
+  width: 18px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.span2{
+  border-left: #000 1px solid;
+}
+
+.firma-real {
+  margin-top: 30px;
+}
+
+.firma-row {
+  display: grid;
+  grid-template-columns:
+    2fr 1.4fr 0.9fr;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: end;
+}
+
+.linea {
+  border-top: 1px solid black;
+  margin: 8px 0;
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 70px;
+  border: 1px dashed #aaa;
+}
+
+.firma-img {
+  width: 100%;
+  max-height: 70px;
+  object-fit: contain;
+}
+
+.cell-wrapper {
+  position: relative;
+}
+
+.floating-delete {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: #d50000;
+  color: white;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.no-pdf {
+  z-index: 999;
+}
+.acta-table tr {
+  position: relative;
 }
