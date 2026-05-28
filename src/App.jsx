@@ -90,12 +90,13 @@ function App() {
 
   const subirFirma = (e, tipo) => {
     const file = e.target.files[0];
+
     if (!file) return;
 
     const reader = new FileReader();
 
-    reader.onloadend = () => {
-      setFirmas((prev) => ({
+    reader.onload = () => {
+      setFirmaImagen((prev) => ({
         ...prev,
         [tipo]: reader.result,
       }));
@@ -291,30 +292,71 @@ function App() {
 
         <h3>Firmas</h3>
 
-        <label>Firma autorizado</label>
-        <input
-          type="file"
-          onChange={(e) =>
-            subirFirma(e, "autorizado")
-          }
-        />
+<label>Firma autorizado</label>
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e) =>
+    subirFirma(e, "autorizado")
+  }
+/>
 
-        <label>Firma entrega</label>
-        <input
-          type="file"
-          onChange={(e) =>
-            subirFirma(e, "entrega")
-          }
-        />
+<button
+  type="button"
+  onClick={() => {
+    firmaAutorizaRef.current.clear();
+    setFirmaImagen((prev) => ({
+      ...prev,
+      autorizado: null,
+    }));
+  }}
+>
+  Borrar firma
+</button>
 
-        <label>Firma recibe</label>
-        <input
-          type="file"
-          onChange={(e) =>
-            subirFirma(e, "recibe")
-          }
-        />
+<label>Firma entrega</label>
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e) =>
+    subirFirma(e, "entrega")
+  }
+/>
 
+<button
+  type="button"
+  onClick={() => {
+    firmaEntregaRef.current.clear();
+    setFirmaImagen((prev) => ({
+      ...prev,
+      entrega: null,
+    }));
+  }}
+>
+  Borrar firma
+</button>
+
+<label>Firma recibe</label>
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e) =>
+    subirFirma(e, "recibe")
+  }
+/>
+
+<button
+  type="button"
+  onClick={() => {
+    firmaRecibeRef.current.clear();
+    setFirmaImagen((prev) => ({
+      ...prev,
+      recibe: null,
+    }));
+  }}
+>
+  Borrar firma
+</button>
         <button onClick={agregarFila}>
           + Agregar Activo
         </button>
@@ -674,15 +716,7 @@ function App() {
       <div className="linea"></div>
       <strong>Firma</strong>
 
-      <input
-        type="file"
-        onChange={(e) =>
-          subirFirma(
-            e,
-            "autorizado"
-          )
-        }
-      />
+      
     </div>
 
     <div className="fecha-col">
@@ -736,15 +770,7 @@ function App() {
       <div className="linea"></div>
       <strong>Firma</strong>
 
-      <input
-        type="file"
-        onChange={(e) =>
-          subirFirma(
-            e,
-            "entrega"
-          )
-        }
-      />
+      
     </div>
 
     <div className="fecha-col">
@@ -792,16 +818,6 @@ function App() {
 
       <div className="linea"></div>
       <strong>Firma</strong>
-
-      <input
-        type="file"
-        onChange={(e) =>
-          subirFirma(
-            e,
-            "recibe"
-          )
-        }
-      />
     </div>
 
     <div className="fecha-col">
